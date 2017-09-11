@@ -1,5 +1,6 @@
 import React from 'react';
 import {loadGames} from '../actions/gbActions';
+import ResultPage from './ResultPage';
 
 class GbSearchBar extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class GbSearchBar extends React.Component {
           <input type="text" ref="searchInput" placeholder="search"/>
           <input type="submit" hidden/>
         </form>
+        <ResultPage />
       </div>
     )
   }

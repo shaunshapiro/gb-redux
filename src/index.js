@@ -5,9 +5,11 @@ import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
+import {loadGames} from './actions/gbActions';
 
 const store = configureStore();
 
+store.dispatch(loadGames('bioshock'));
 
 render(
   <Provider store={store}>

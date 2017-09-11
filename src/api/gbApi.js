@@ -1,21 +1,16 @@
-import request from 'then-jsonp';
+import fetchJsonp from 'fetch-jsonp';
 
 class gbApi {
 
   static runSearch(search) {
-    let url='https://www.giantbomb.com/api/games/?format=jsonp&json_callback=responseObject&api_key=c7d47b04d71a7446a8aced4f540c6711cc859ebc';
+    let url='https://www.giantbomb.com/api/games/?format=jsonp&json_callback=responseObject&api_key=c7d47b04d71a7446a8aced4f540c6711cc859ebc&filter=name:' + search;
     let options = {
-              qs: {
-                filter: 'name:' + search
-              },
-              callbackName: 'responseObject'
+              jsonpCallbackFunction: 'responseObject'
             };
     return (
-      request('GET', url, options).done(response => {
-        console.log(response);
-        return response;
-      }).catch(error => {
-        return error;
+      fetchJsonp(url, options).then(function(response) {
+        console.log(response.json());
+        return response.json();
       })
     )
   }

@@ -2,14 +2,11 @@ import gbApi from '../api/gbApi';
 import * as types from './actionTypes';
 
 export function loadGames(search) {
-  debugger;
   return function(dispatch) {
-    debugger;
     return gbApi.runSearch(search).then(response => {
-      dispatch(loadGamesSuccess(response.results));
-    }).catch(error => {
-      throw(error);
-    });
+      let formattedResponse = response.results.map(function(x){return {name: x.name, image: x.image.screen_large_url}})
+      dispatch(loadGamesSuccess(formattedResponse));
+    })
   };
 }
 
