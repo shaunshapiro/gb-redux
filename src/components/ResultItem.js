@@ -6,6 +6,7 @@ const ResultItem =({games}) => {
       {games.map(game =>
         <li className="list-group-item" key={game.id}>
           {game.name}
+          <img src={game.image} alt={game.name} height="100" width="100" />
         </li>
       )}
     </ul>

@@ -19,7 +19,6 @@ class GbSearchBar extends React.Component {
           <input type="text" ref="searchInput" placeholder="search"/>
           <input type="submit" hidden/>
         </form>
-        <ResultPage />
       </div>
     )
   }

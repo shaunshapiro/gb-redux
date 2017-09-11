@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import logo from '../logo.svg';
 import '../App.css';
+import GbSearchBar from './GbSearchBar';
 
 class App extends React.Component {
   render() {
@@ -10,6 +11,8 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to GBSearch</h2>
         </div>
+        <GbSearchBar />
+
         {this.props.children}
       </div>
     );
