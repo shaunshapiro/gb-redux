@@ -1,21 +1,35 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {loadGames} from '../actions/gbActions';
 import ResultsPage from './ResultsPage';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as gbActions from '../actions/gbActions';
 
 class GbSearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.loadGames = loadGames.bind(this);
+  constructor(props, context) {
+    super(props, context);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {search: this.props.search};
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.search != nextProps.search) {
+      this.setState({search: nextProps.search});
+    }
+  }
+
   handleSubmit(e) {
-    e.preventDefault;
-    this.loadGames(this.refs.searchInput.value);
+    e.preventDefault();
+    this.setState({search: this.refs.searchInput.value});
+    if (this.state.search.length > 0) {
+      this.props.actions.loadGames(this.state.search);
+    }
   }
 
   render() {
     return (
       <div className="searchBox">
-        <form ref="searchForm" className="search-form" onSubmit={this.handleSubmit.bind(this)} >
+        <form ref="searchForm" className="search-form" onSubmit={this.handleSubmit} >
           <input type="text" ref="searchInput" placeholder="search"/>
           <input type="submit" hidden/>
         </form>
@@ -24,4 +38,24 @@ class GbSearchBar extends React.Component {
   }
 };
 
-export default GbSearchBar;
+GbSearchBar.propTypes = {
+  search: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, OwnProps) {
+  let search = '';
+  if (state.search && state.search.length > 0) {
+    search = state.search
+  }
+  return {search: search}
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(gbActions, dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(GbSearchBar);
