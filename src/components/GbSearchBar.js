@@ -1,6 +1,6 @@
 import React from 'react';
 import {loadGames} from '../actions/gbActions';
-import ResultPage from './ResultPage';
+import ResultsPage from './ResultsPage';
 
 class GbSearchBar extends React.Component {
   constructor(props) {

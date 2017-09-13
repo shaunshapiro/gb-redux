@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const ResultItem =({games}) => {
+const ResultsList =({games}) => {
   return (
     <ul className="list-group">
       {games.map(game =>
@@ -13,8 +13,8 @@ const ResultItem =({games}) => {
   )
 };
 
-ResultItem.PropTypes ={
+ResultsList.PropTypes ={
   games: PropTypes.array.isRequired
 };
 
-export default ResultItem;
+export default ResultsList;

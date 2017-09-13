@@ -1,14 +1,15 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
-import ResultItem from './components/ResultItem';
+import ResultsList from './components/ResultsList';
+import ResultsPage from './components/ResultsPage';
 import ResultPage from './components/ResultPage';
-
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={ResultPage}>
-      <Route path="/games/:id" component={ResultItem} />
-    </IndexRoute>
+    <IndexRoute component={ResultsPage} />
+    <Route path="/games" component={ResultsPage}>
+      <Route path="/games/:id" component={ResultPage} />
+    </Route>
   </Route>
 );

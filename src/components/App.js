@@ -7,7 +7,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
+        <div className="container-fluid">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to GBSearch</h2>
         </div>
