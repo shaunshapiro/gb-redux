@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import * as gbActions from '../actions/gbActions';
 import ResultsList from './ResultsList';
 
 class ResultsPage extends React.Component {

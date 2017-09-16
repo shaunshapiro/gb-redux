@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import {loadGames} from '../actions/gbActions';
-import ResultsPage from './ResultsPage';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as gbActions from '../actions/gbActions';
@@ -12,15 +10,16 @@ class GbSearchBar extends React.Component {
     this.state = {search: this.props.search};
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.search != nextProps.search) {
-      this.setState({search: nextProps.search});
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   debugger;
+  //   if (this.props.search !== nextProps.search) {
+  //     this.setState({search: nextProps.search});
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({search: this.refs.searchInput.value});
+    this.state = { search: this.refs.searchInput.value };
     if (this.state.search.length > 0) {
       this.props.actions.loadGames(this.state.search);
     }

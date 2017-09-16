@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
-import ResultsList from './components/ResultsList';
 import ResultsPage from './components/ResultsPage';
 import ResultPage from './components/ResultPage';
 
